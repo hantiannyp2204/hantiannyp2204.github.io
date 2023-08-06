@@ -165,6 +165,16 @@ function hideallpages() {
 }
 //fucntion to show said page
 function showpage(pageNumber) {
+  let nextButtonTxt = document.querySelector("#nextButton_span");
+  if(currentPage == 4)
+  {
+
+    nextButtonTxt.innerHTML = "End Tutorial";
+  }
+  else
+  {
+    nextButtonTxt.innerHTML = "next page";
+  }
   //hide all active pages and nav first
   hideallpages();
   //select the section containing the pages and nav
@@ -176,11 +186,7 @@ function showpage(pageNumber) {
   let subnav = document.querySelectorAll(".subnav");
   currentNav = subnav[pageNumber-1];
   //change text of next button if at final section
-  if(currentPage == 4)
-  {
-    let nextButtonTxt = document.querySelector("#nextButton_span");
-    nextButtonTxt.innerHTML = "End Tutorial";
-  }
+
 
   if(isNavShowned == false)
   {
@@ -225,9 +231,10 @@ nextButton.addEventListener("click",nextPage);
 function nextPage() {
   //if its not the last page, go next
   if (currentPage < 4) {
-    showpage(currentPage + 1);
-    //increase current page by one
+
     currentPage++;
+    showpage(currentPage);
+    //increase current page by one
     //go to the top
     scrollToSection("title");
   }
@@ -409,9 +416,10 @@ endBtn.addEventListener("click", restartTut);
 function restartTut()
 {
   endScreen.classList.replace("showflex","hidden");
-  scrollToTitle();
+
   currentPage = 1;
   showpage(1);
+  scrollToTitle();
 }
 function showEndScreen()
 {
