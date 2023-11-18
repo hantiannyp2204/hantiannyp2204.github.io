@@ -1,461 +1,119 @@
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link href="styles.css" rel="stylesheet"/>
-</head>
-
-
-<body>
-    <script src="script.js" defer></script>
-   <div id="flex">
-        <!-- side nav buttons -->
-        <div id="nav_page1" class = "subnav">
-            <div>
-                <button class="side_button" id="summaryButton">
-                    Summary
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="newProjButton">
-                    New Project
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="downloadingButton">
-                    Downloading
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="importingButton">
-                    Importing
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-               
-            </div>
-
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Wotagei Form</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=1080 height=1920></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
         </div>
-        <div id="nav_page2" class = "subnav">
-            <div>
-                <button class="side_button" id="controlButton">
-                    Control
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="cutButton">
-                    C for cut
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="cursorButton">
-                    V resembles cursor
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="markerButton">
-                    M for Marker
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-               
-            </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Wotagei Form</div>
+      </div>
+    </div>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
 
-        </div>
-        <div id="nav_page3" class = "subnav">
-            <div>
-                <button class="side_button" id="transformButton">
-                    Transform
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="adjustmentButton">
-                    Adjustment Layer
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="shakeButton">
-                    S_Shake
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="hueButton">
-                    S_HueSatBrightness
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-               
-            </div>
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
 
-        </div>
-        <div id="nav_page4" class = "subnav">
-            <div>
-                <button class="side_button" id="effectsButton">
-                    Effects clonning
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="ccButton">
-                    Colour Correction
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-            <div>
-                <button class="side_button" id="checkupButton">
-                    Video checkup
-                    <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 .side_button" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- top nav buttons -->
-        <div id="content">
-            <!-- intro picture plus nav buttons -->
-             <div id="banner">  
-                <div id="nav">
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/Web.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/Web.data.br",
+        frameworkUrl: buildUrl + "/Web.framework.js.br",
+        codeUrl: buildUrl + "/Web.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Wotagei Form",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+      };
 
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
 
-                    <button id="show_side_nav"></button>
-                    <div class="nav_buttons_container">
-                        <button id="basicsButton" class="nav_buttons">Basics</button>
-                    </div>
-                    <div class="nav_buttons_container">
-                        <button id="controlsButton" class="nav_buttons">Controls</button>
-                    </div>
-                    <div class="nav_buttons_container">
-                        <button id="editingButton" class="nav_buttons">Editing</button>
-                    </div>
-                    <div class="nav_buttons_container">
-                        <button id="finalisingButton" class="nav_buttons">Finalising</button>
-                    </div>
-                </div>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
 
-                <div id="title">
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
 
-                    <h1>Editing tutorial</h1>
-                    <h2>Making a Valorant Montage</h2>
-                </div>
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
 
-                <div id="details">
-                    
-                    <p>Beginner | 1 hour 45 minutes</p>
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-                </div>
-                <div id="uploader_content">
-                    <button class="uploader">
-                        <span id="actual_text">&nbsp;by TobxtR&nbsp;</span>
-                        <span class="uploader_hover_text" aria-hidden="true">&nbsp;Hantian&nbsp;</span>
-                    </button>
+        canvas.style.width = "1080px";
+        canvas.style.height = "1920px";
+      }
 
-                </div>
-                
-                
-             </div>
-            <!-- tutorial content -->
-            <div id="tutorial"> 
-                <div id = "page1" class = "page">
-                    <div id="summary" class="section">
-                        <h1>Summary</h1>
-                        <p>In this tutorial, I will be guiding you into getting started on your first Valorant Montage.</p>
-                        <p>Even if editing a quirky gaming video is not your taste, you will still be able to walk out of this knowing how to edit basically any type of video</p>
-                    </div>
-                    <hr>
-                    <div id="newProj"  class="section">
-                        <h1>New Project</h1>
-                        <p>First we are going to create a new project, this marks the begining of your editing journey</p>
-                        <img src="images/basics/newproj.png" alt = "selecting new project">
+      loadingBar.style.display = "block";
 
-                        <p>Give it any name you want, I will be naming mine "Editing Tutorial"</p>
-                        <img src="images/basics/name.png" alt = "naming your project">
-                        <p>After you are done, click "Create" to be brought to our editing timeline</p>
-    
-                    </div>
-                    <hr>
-                    <div id="downloading"  class="section">
-                        <h1>Downloading</h1>
-                        <p>At the begining of every project, an editor will always know what he wants to create beforehand, storyboard your ideas, get creative. </p>
-                        <!-- show a story board, make a random one -->
-                        <img src="images/basics/stroyboard.jpg" width="70%" alt = "example of a storyboard">  
-                        <br>
-                        <p>After that, we are going to go ahead and get our assets, which in video editing terms, our footages.</p>
-                        <br>
-                        <p>This can range from video you took, or mp3s from youtube, I would recommend using <a href="https://ytmp3.nu/B4Bd65/" target="_blank">https://ytmp3.nu/F055d/</a> to convert any youtube link into a mp3 or mp4 with ease</p>
-                        <br>
-                        <p>Click on "Mp3/Mp4" button to toggle between file convertion type</p>
-                        <p>Press "Convert" to see the simulated file</p>
-                        <div id ="youtubeToMp3">
-                            <img src="images/basics/youtube-to-mp3.png" id="yt2mp" alt ="youtube convertion simulator">
-                            <button id="mpButton">Mp3</button>
-                            <button id="convertButton">Mp3</button>
-
-                        </div>
-                        <img src="images/basics/mp3.png" id="convertedFile" class = "hidden" alt="a simulated converted file">
-                    </div>
-                    <hr>
-                    <div id="importing"  class="section">
-                        <h1>Importing</h1>
-                        <p>Lastly we will import our pluggins, this is optional as the built in libary for Adobe Premiere Pro is already pretty powerful</p>
-                        <br>
-                        <p>However, I wanted to make this journey as refreshing as posible, so we will be apply effects 10x faster than using normal techniques</p>
-                        <h2>Installing sapphire</h2>
-                        <p>This will help in camera shakes and such, giving more impact to each kill</p>
-                        <div class="youtube_video_container">
-                            <iframe class="youtube_video" src="https://www.youtube.com/embed/bfXk_iVmXL0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                        <h2>Installing Magic Bullet suit</h2>
-                        <p>This will aid in color correction and allow the entire video to be much crisper</p>
-                        <div class="youtube_video_container">
-                            <iframe class="youtube_video" src="https://www.youtube.com/embed/Z5ezz-PN93A" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                       
-                    </div>
-                </div>
-
-                <div id = "page2" class = "page">
-                    <div id="control"  class="section">
-                        <h1>Control</h1>
-                        <p>In this section you will learn how to navigate through Premiere Pro</p>
-                        <br>
-                        <p>Technically, you will only need 3 keys to craft a fully edited video. The big three are "Control, C and V"</p>
-                        <br>
-                        <p>So train your fingers to be able to press this 3 keys without looking, and fast</p>
-                        <div id="keyboardGame">
-                            <div id="keybuttonContainer">
-                                <div class = "keycaps">
-                                    <img src="images/control/control-key.png" id="controlKey" class ="keyboard-image" alt="an image of the control key">
-                                </div>
-    
-                                <div class = "keycaps">
-                                    <img src="images/control/c-key.png" id="cKey" class ="keyboard-image" alt="an image of the c key">
-                                </div >
-                                <div class = "keycaps">
-                                    <img src="images/control/v-key.png" id="vKey" class ="keyboard-image" alt="an image of the v key">
-                                </div>
-                            </div>
-                            
-                            <p class="keyboardResults">Press a Key</p>
-                        </div>
-                       
-                        <p>Control is to be paired up with C and V to trigger "Copy" and "Paste" shortcuts, this will ease your editing efforts</p>
-                        <p>C is shorcut for "Razor Tool" while V is for the "Cursor Tool"</p>
-                        <p>I will get into more details about them in the next section</p>
-                        <br>
-                        <p>But first, let us insert our content, simply drag and drop them into the Libaray pannel</p>
-                        <img src="images/control/import-files.png" alt="Importing file example">
-                        
-                        </div>
-                    <hr>
-                    <div id="cut"  class="section">
-                        <h1>C for cut</h1>
-                        <p>Press "C" to toggle into the razor tool, left click anywhere in your content to split it into 2 parts.</p>
-                        <br>
-                        <p>This is how we will trim our footage</p>
-                        <img src="images/control/razor-tool.png" alt ="razor tool example">
-                    </div>
-                    <hr>
-                    <div id="cursor"  class="section">
-                        <h1>V resembles cursor</h1>
-                        <p>Press "V" to toggle back to Cursor mode, practice switching from Razor to Cursor mode quicky as it will be a norm to do so</p>
-                        <img src="images/control/cursor-tool.png" alt = "cursor tool example">  
-                    </div>
-                    <hr>
-                    <div id="marker"  class="section">
-                        <h1>M for marker</h1>
-                        <p>This is an optioanl step, but it is good practise for syncing our clips to the audio's beat</p>
-                        <br>
-                        <p>Placing markers allows our content to eaily snap into it, which helps in "pixel perfect" placements</p>
-                        <img src="images/control/marker.png" alt ="example of using the marker">
-                    </div>
-                </div>
-                <div id = "page3" class = "page">
-                    <div id="transform"  class="section">
-                        <h1>Transform</h1>
-                        <p>The most common and simpliest transitions/effects is the manipulation of the video's position</p>
-                        <br>
-                        <p>Select the video to expose it's properties</p>
-                        <!-- maybe use 2 png for this -->
-                        <img src="images/editing/properties.png" alt="showing of proerties tab on transform">
-                        <p>Click on this icon to start editing it using keyframes, drag the automatically made keyframe to the begining of the effect.</p>
-                        <img src="images/editing/keyframingpt1.png" alt ="first exmaple of keyframing">
-                        <img src="images/editing/keyframingpt2.png" alt ="second exmaple of keyframing">
-                        <p>go to the end of the effect and then adjust its position accordingly</p>
-                        <img src="images/editing/keyframingpt3.png" alt ="third exmaple of keyframing">
-                        <p>Usually I make the transition smoother by using easy-ease-in for the end, but this is up to you</p>
-                        <img src="images/editing/keyframingpt4.png" alt ="fourth exmaple of keyframing">
-                        
-                    </div>
-                    <hr>
-                    <div id="adjustment"  class="section">
-                        <h1>Adjustment layer</h1>
-                        <p>This is how we are going to apply multiple effects onto one clip, this method allows us to duplicate effects easily onto another clips.</p>
-                        <br>
-                        <p>Press on this icon and input your desired settings before proceeding</p>
-                        <img src="images/editing/adjustmentpt1.png" alt ="step 1 of using an adjustment layer">
-                        <img src="images/editing/adjustmentpt2.png" alt ="step 2 of using an adjustment layer">
-                        <p>Drag it above the clip(s) you want the effects to be applied on, any video clips below it will be effected</p>
-                        <img src="images/editing/adjustmentpt3.png" alt ="step 3 of using an adjustment layer">
-                        <p>Trim it accordingly to the start and end of effects for better readability</p>
-                        <img src="images/editing/adjustmentpt4.png" alt ="step 4 of using an adjustment layer">
-                    </div>
-                    <hr>
-                    <div id="shake"  class="section">
-                        <h1>Shake</h1>
-                        <p>This is a very commonly seen effect in Video Game montages, usualyl applied to enhance the visual of a kill</p>
-                        <br>
-                        <p>Search for "S_Shake" and drag it onto your adjustment layer</p>
-                        <div class ="searchBar">
-                            <input type="text" id="s_shakeInput" class="input">
-                            <!-- //runs the search shake function -->
-                            <button type="button" onclick="checkShakeInput()" class ="searchBtn">Search</button>
-                        </div>
-                        <img src="images/editing/s-shake.png" id="s-shake" class="hidden " alt="example of the s_shake preset">
-                        <br>
-                        <p>Just like keyframming the transform effect, we create a start key and set the amplitute to be 0 at which ever location to your liking</p>
-                        <p>(I recommend 10 frames for 60fps videos)</p>
-                        <div class ="grouped">
-                            <img  src="images/editing/s-shakegrp1edit.png" alt ="step 1 of using the shake preset">  
-                            <img  src="images/editing/s-shakegrp1result.png" alt ="sresults of step 1">  
-                        
-                        </div>
-                        <p>Lastly, enable Motion blur</p>
-                        <div class ="grouped">
-                            <img  src="images/editing/s-shakegrp2edit.png" alt ="step 2 of using the shake preset">  
-                            <img  src="images/editing/s-shakegrp2result.png" alt ="results of step 2">  
-                        
-                        </div>
-                    </div>
-                    <hr>
-                    <div id="hue"  class="section">
-                        <h1>Hue Saturation & Brightness</h1>
-                        <p>This is another effect we will use to spice up each and every kill the player gets, it simiply simulates a quick light flash usually used along-side with S_Shake</p>
-                        <br>
-                        <p>Search for S_HueSatBright and drag it onto our adjustment layer</p>
-                        <div class ="searchBar">
-                            <input type="text" id="s_huesatbrightInput" class="input">
-                            <!-- //runs the search shake function -->
-                            <button type="button" onclick="checkHuesatbrightInput()" class ="searchBtn">Search</button>
-                        </div>
-                        <img src="images/editing/s-huesatbright.png" id="s-huesatbright" class="hidden" alt="example of the s_huesatbright preset">
-                        <p>Excatly like the previous two effects, we are going to use more keyframming</p>
-                        <br>
-                        <p>Set the first frame to be at value of 3, then skip forward 5 frames before setting it to 0</p>
-                        <div class ="grouped">
-                            <img  src="images/editing/s-huesatbrightgrp1edit.png" alt ="example of using the huesatbright preset">  
-                            <img  src="images/editing/s-huesatbrightgrp1result.png" alt ="result of using the huesatbright preset">  
-                        
-                        </div>
-                       
-                        <p>Of course, you can adjust all the values to your liking</p>
-                    </div>
-                </div>
-                <div id = "page4" class = "page">
-                    <div id="effects"  class="section">
-                        <h1>Effects clonning</h1>
-                        <p>Now duplicate all the effects to every kill, by copying and pasting the adjustment layer</p>
-                        <p>Remember that the start of the adjustment layer will be the start of the kill</p>
-                        <img src="images/finalising/copypaste.png" alt ="example of copy pasting the adjustment layers">
-                        
-                    </div>
-                    <hr>
-                    <div id="cc"  class="section">
-                        <h1>Colour Correction</h1>
-                        <p>Lastly, we are going to further enhance the visuals with a simple click, with the help of Magic Bullet's Look effect</p>
-                        <br>
-                        <p>Create a new adjustment layer and make sure it is a the top of every video</p>
-                        <img src="images/finalising/colourcorrectionpt1.png" alt ="step 1 of using the colour correction preset">
-                        
-                        <p>Furthermore, stretch the adjustment layer using the Cursor mode and dragging it's side until it filled up the entire video's timeline</p>
-                        <img src="images/finalising/colourcorrectionpt2.png" alt ="step 2 of using the colour correction preset">
-                        <p>Next, search up for Looks under Magic Bullet's catagory</p>
-                        <div class ="searchBar">
-                            <input type="text" id="mb-looksInput" class="input">
-                            <!-- //runs the search shake function -->
-                            <button type="button" onclick="checkLooksInput()" class ="searchBtn">Search</button>
-                        </div>
-                        <img src="images/finalising/magicbullet-looks.png" id="mb-looks" class="hidden" alt ="example of looks preset">
-                        
-                        
-                        <br>
-                        <p>Drag it into the adjustment layer, then click on the edit button</p>
-                        <img src="images/finalising/looks-edit.png" alt ="step 3 of using the colour correction preset">
-                        <p>A new window will pop-up, simply select the one that looks good in your opinion</p>
-                        <img src="images/finalising/looks-select.png" alt ="step 4 of using the colour correction preset">
-                        <p>Once done, click on the Tick icon at the bottom right</p>
-                        <img src="images/finalising/looks-make-selection.png" alt ="step 5 of using the colour correction preset">
-                        <p>Result:</p>
-                        <img src="images/finalising/looks-result.png" alt ="results of using the colour correction preset">
-                    </div>
-                    <hr>
-                    <div id="checkup"  class="section">
-                        <h1>Video Checkup</h1>
-                        <p>We are now at the final part of the project, rewatch your video and see if any adjustments need to be made</p>
-                        <br>
-                        <p>Once done, press Control + M to bring up the render menu</p>
-                        <img src="images/finalising/render-menu.png" alt ="step 1 of rendering video">
-                        <p>Rename the video to whatever you want</p>
-                        <img src="images/finalising/rename.png" alt ="step 2 of rendering video">
-                        <p>And set the target folder to locate your rendered video</p>
-                        <img src="images/finalising/location.png" alt ="step 3 of rendering video">
-                        <p>Lastly, click on export to begining the rendering process</p>
-                        <img src="images/finalising/render-export.png" alt ="step 4 of rendering video">
-                    </div>
-                    
-                </div>
-                <hr>
-            </div>
-            <div id="nextbutton_flex">
-                <button id="next_button">
-                    <span id="nextButton_span">
-                        Next page
-                    </span>
-                </button>
-            </div>
-
-        </div>
-
-   </div>
-   <div id ="end_screen" class="hidden">
-        <div id ="end_screen_box">
-           <h1>You have completed the tutorial</h1>
-           <button id = "end_button" class="nav_buttons">Back to the start!</button>
-        </div>
-   </div>
-</body>
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>
